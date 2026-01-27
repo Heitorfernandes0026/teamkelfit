@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ClipboardList, Dumbbell, HeartPulse, TrendingUp } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import WorkoutMarquee from './WorkoutMarquee';
@@ -29,7 +30,7 @@ const steps = [
   },
 ];
 
-const HowItWorksSection = () => {
+const HowItWorksSection = memo(() => {
   const { ref, visibleItems } = useScrollAnimation(steps.length);
 
   return (
@@ -107,6 +108,8 @@ const HowItWorksSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HowItWorksSection.displayName = 'HowItWorksSection';
 
 export default HowItWorksSection;

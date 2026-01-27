@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-kelfit.jpg';
 import WorkoutMarquee from './WorkoutMarquee';
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
   const scrollToPlans = () => {
     const element = document.querySelector('#planos');
     if (element) {
@@ -12,7 +13,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden bg-background">
-      {/* LCP-optimized Hero Image with priority loading */}
+      {/* LCP-optimized Hero Image with priority loading - explicit dimensions for CLS prevention */}
       <img
         src={heroImage}
         alt="Team KelFit - Consultoria Fitness Premium"
@@ -20,6 +21,8 @@ const HeroSection = () => {
         height={1080}
         fetchPriority="high"
         decoding="sync"
+        loading="eager"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: '1920px 1080px' }}
         className="absolute inset-0 top-16 md:top-20 w-full h-full object-cover object-center"
       />
 
@@ -61,6 +64,8 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = 'HeroSection';
 
 export default HeroSection;
