@@ -1,26 +1,36 @@
-import { Sparkles, Headphones, FlaskConical, Trophy } from 'lucide-react';
+import { Sparkles, Headphones, FlaskConical, Trophy, Target, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const differentials = [
   {
-    icon: Sparkles,
-    title: 'Personalização Extrema',
-    description: 'Cada plano é único, criado especificamente para você, considerando sua rotina, preferências e objetivos.',
+    icon: Target,
+    title: 'Personalização Total',
+    description: 'Cada aspecto do seu programa é criado exclusivamente para você.',
   },
   {
     icon: Headphones,
-    title: 'Suporte Humano 24h',
-    description: 'Atendimento real, com profissionais dedicados prontos para ajudar a qualquer momento.',
+    title: 'Suporte 24 Horas',
+    description: 'Tire dúvidas e receba orientação a qualquer momento do dia.',
   },
   {
     icon: FlaskConical,
-    title: 'Metodologia Científica',
-    description: 'Baseamos nossos protocolos nas mais recentes pesquisas de nutrição e treinamento.',
+    title: 'Base Científica',
+    description: 'Métodos comprovados por pesquisas atualizadas.',
   },
   {
     icon: Trophy,
-    title: 'Resultados Comprovados',
-    description: '+500 alunos transformados com resultados documentados e acompanhamento contínuo.',
+    title: 'Resultados Reais',
+    description: '+500 alunos transformados com resultados documentados.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Evolução Semanal',
+    description: 'Ajustes constantes para otimizar seu progresso.',
+  },
+  {
+    icon: Zap,
+    title: 'Método Eficiente',
+    description: 'Máximos resultados com treinos objetivos e práticos.',
   },
 ];
 
@@ -28,68 +38,76 @@ const DifferentialsSection = () => {
   const { ref, visibleItems } = useScrollAnimation(differentials.length);
 
   return (
-    <section id="resultados" className="py-24 relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
-      
-      {/* Accent glow */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
+    <section id="resultados" className="py-24 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+
+      {/* Orange glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl mb-4">
-            POR QUE ESCOLHER O <span className="text-gradient-blue">TEAM KELFIT?</span>
+          <span className="text-primary text-sm font-bold tracking-widest mb-4 block">DIFERENCIAIS</span>
+          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-6">
+            POR QUE O <span className="text-gradient-orange">TEAM KELFIT?</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Diferenciais que fazem da nossa consultoria a escolha número 1.
-          </p>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-px bg-primary" />
+            <p className="text-muted-foreground max-w-xl">
+              O que nos torna a escolha número 1 para quem busca resultados reais.
+            </p>
+            <div className="w-12 h-px bg-primary" />
+          </div>
         </div>
 
         {/* Differentials Grid */}
-        <div ref={ref} className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {differentials.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className={`flex gap-6 p-6 rounded-xl bg-card/50 border border-border/30 hover:border-accent/30 transition-all duration-500 group ${
-                  visibleItems[index] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                className={`group relative transition-all duration-700 ${
+                  visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Icon */}
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                    <Icon className="w-8 h-8 text-accent" />
+                <div className="relative p-6 rounded-xl border border-border/30 bg-card/30 hover:border-primary/40 hover:bg-card/50 transition-all duration-300 h-full">
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
-                </div>
 
-                {/* Content */}
-                <div>
-                  <h3 className="font-display font-bold text-xl mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                  {/* Content */}
+                  <h3 className="font-display font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+
+                  {/* Hover accent */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto">
-          {[
-            { value: '500+', label: 'Alunos Transformados' },
-            { value: '98%', label: 'Taxa de Satisfação' },
-            { value: '24/7', label: 'Suporte Disponível' },
-            { value: '5+', label: 'Anos de Experiência' },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <p className="font-display font-black text-3xl md:text-4xl text-primary mb-1">
-                {stat.value}
-              </p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
+        {/* Stats bar */}
+        <div className="mt-20 p-8 rounded-2xl border border-border/30 bg-card/30 backdrop-blur-sm">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: '500+', label: 'Alunos Transformados' },
+              { value: '98%', label: 'Taxa de Satisfação' },
+              { value: '24/7', label: 'Suporte Disponível' },
+              { value: '5+', label: 'Anos de Experiência' },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <p className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-primary mb-2">
+                  {stat.value}
+                </p>
+                <p className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

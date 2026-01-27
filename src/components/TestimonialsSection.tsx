@@ -59,17 +59,22 @@ const TestimonialsSection = () => {
 
   return (
     <section id="depoimentos" className="py-24 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-card/50" />
+      
+      {/* Decorative lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl mb-4">
+          <span className="text-primary text-sm font-bold tracking-widest mb-4 block">DEPOIMENTOS</span>
+          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-4">
             HISTÓRIAS DE <span className="text-gradient-orange">SUCESSO</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Veja quem já alcançou o objetivo com a Team KelFit.
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Veja o que nossos alunos têm a dizer sobre a experiência com o Team KelFit.
           </p>
         </div>
 
@@ -77,31 +82,32 @@ const TestimonialsSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Main testimonial card */}
-            <div className="glass-card p-8 md:p-12 relative">
-              <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/20" />
+            <div className="relative p-8 md:p-12 rounded-2xl bg-background border border-border/30">
+              {/* Quote icon */}
+              <Quote className="absolute top-8 left-8 w-16 h-16 text-primary/10" />
               
               <div className="relative z-10">
                 {/* Rating */}
-                <div className="flex gap-1 mb-6 justify-center">
+                <div className="flex gap-1 mb-8 justify-center">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                   ))}
                 </div>
 
                 {/* Text */}
-                <p className="text-lg md:text-xl text-center text-muted-foreground leading-relaxed mb-8">
+                <p className="text-xl md:text-2xl text-center leading-relaxed mb-10 font-light">
                   "{testimonials[currentIndex].text}"
                 </p>
 
                 {/* Author */}
                 <div className="flex items-center justify-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="font-display font-bold text-primary">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
+                    <span className="font-display font-bold text-primary text-lg">
                       {testimonials[currentIndex].avatar}
                     </span>
                   </div>
-                  <div>
-                    <p className="font-display font-bold">{testimonials[currentIndex].name}</p>
+                  <div className="text-left">
+                    <p className="font-display font-bold text-lg">{testimonials[currentIndex].name}</p>
                     <p className="text-sm text-muted-foreground">{testimonials[currentIndex].role}</p>
                   </div>
                 </div>
@@ -109,18 +115,18 @@ const TestimonialsSection = () => {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-8">
+            <div className="flex items-center justify-center gap-6 mt-8">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={goToPrevious}
-                className="rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
+                className="w-12 h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
 
               {/* Dots */}
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
@@ -128,10 +134,10 @@ const TestimonialsSection = () => {
                       setIsAutoPlaying(false);
                       setCurrentIndex(index);
                     }}
-                    className={`w-2 h-2 rounded-full transition-all ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? 'bg-primary w-6'
-                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                        ? 'bg-primary w-8'
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2'
                     }`}
                   />
                 ))}
@@ -141,7 +147,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={goToNext}
-                className="rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
+                className="w-12 h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
               >
                 <ChevronRight className="w-5 h-5" />
               </Button>

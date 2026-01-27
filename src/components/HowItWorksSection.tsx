@@ -5,26 +5,26 @@ const steps = [
   {
     number: '01',
     icon: ClipboardList,
-    title: 'Análise Inicial',
-    description: 'Preencha nosso questionário detalhado para uma análise completa do seu perfil, metas e rotina.',
+    title: 'Análise Completa',
+    description: 'Avaliação detalhada do seu perfil físico, objetivos e rotina para criar a estratégia perfeita.',
   },
   {
     number: '02',
     icon: Dumbbell,
-    title: 'Plano Personalizado',
-    description: 'Receba um programa de treino e nutrição 100% adaptado às suas necessidades e objetivos.',
+    title: 'Treino Personalizado',
+    description: 'Programa de treino 100% adaptado às suas necessidades, preferências e disponibilidade.',
   },
   {
     number: '03',
     icon: HeartPulse,
-    title: 'Acompanhamento Premium',
-    description: 'Suporte contínuo com ajustes semanais e feedback em tempo real para maximizar resultados.',
+    title: 'Nutrição Estratégica',
+    description: 'Plano alimentar flexível e sustentável, ajustado ao seu estilo de vida e objetivos.',
   },
   {
     number: '04',
     icon: TrendingUp,
-    title: 'Evolução Constante',
-    description: 'Acompanhe sua evolução com métricas detalhadas e celebre cada conquista no caminho.',
+    title: 'Evolução Contínua',
+    description: 'Acompanhamento semanal com ajustes constantes para maximizar seus resultados.',
   },
 ];
 
@@ -32,19 +32,31 @@ const HowItWorksSection = () => {
   const { ref, visibleItems } = useScrollAnimation(steps.length);
 
   return (
-    <section id="como-funciona" className="py-24 relative">
-      {/* Background */}
-      <div className="absolute inset-0 carbon-pattern opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+    <section id="como-funciona" className="py-24 relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-card via-background to-background" />
+      
+      {/* Decorative grid lines */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="h-full w-full" style={{
+          backgroundImage: 'linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)',
+          backgroundSize: '80px 80px'
+        }} />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-display font-black text-3xl md:text-4xl lg:text-5xl mb-4">
-            NOSSA <span className="text-gradient-orange">METODOLOGIA</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Entenda como vamos construir a sua melhor versão, passo a passo.
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+          <div>
+            <span className="text-primary text-sm font-bold tracking-widest mb-4 block">METODOLOGIA</span>
+            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-tight">
+              PASSO A PASSO
+              <br />
+              <span className="text-gradient-orange">PARA O SUCESSO</span>
+            </h2>
+          </div>
+          <p className="text-muted-foreground max-w-md lg:text-right">
+            Uma metodologia comprovada que já transformou mais de 500 vidas. Seu próximo nível começa aqui.
           </p>
         </div>
 
@@ -55,26 +67,33 @@ const HowItWorksSection = () => {
             return (
               <div
                 key={index}
-                className={`group glass-card p-6 hover:border-primary/30 transition-all duration-500 gradient-border ${
-                  visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`group relative transition-all duration-700 ${
+                  visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                 }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
-                {/* Number */}
-                <span className="font-display font-black text-5xl text-primary/20 group-hover:text-primary/40 transition-colors">
-                  {step.number}
-                </span>
+                {/* Card */}
+                <div className="relative h-full p-8 bg-card/50 border border-border/30 rounded-xl hover:border-primary/50 transition-all duration-300 overflow-hidden group-hover:bg-card/80">
+                  {/* Large background number */}
+                  <span className="absolute -right-4 -top-4 font-display font-black text-[120px] text-primary/5 leading-none select-none group-hover:text-primary/10 transition-colors">
+                    {step.number}
+                  </span>
 
-                {/* Icon */}
-                <div className="my-4">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  {/* Icon */}
+                  <div className="relative z-10 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-7 h-7 text-primary" />
                   </div>
-                </div>
 
-                {/* Content */}
-                <h3 className="font-display font-bold text-xl mb-3">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                  {/* Number badge */}
+                  <div className="relative z-10 inline-flex items-center gap-2 mb-4">
+                    <span className="text-primary font-display font-bold text-sm">{step.number}</span>
+                    <div className="w-8 h-px bg-primary/50" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="relative z-10 font-display font-bold text-xl mb-3">{step.title}</h3>
+                  <p className="relative z-10 text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                </div>
               </div>
             );
           })}
