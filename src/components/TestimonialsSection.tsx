@@ -11,16 +11,30 @@ import transform4 from '@/assets/transformations/transform-4.jpeg';
 import transform5 from '@/assets/transformations/transform-5.jpeg';
 import transform6 from '@/assets/transformations/transform-6.jpeg';
 import transform7 from '@/assets/transformations/transform-7.jpeg';
+import transform8 from '@/assets/transformations/transform-8.jpeg';
 import testimonialVideo from '@/assets/transformations/testimonial-video.mp4';
 
+// Social proof photos
+import socialProof1 from '@/assets/social-proof-1.jpeg';
+import socialProof2 from '@/assets/social-proof-2.jpeg';
+import socialProof3 from '@/assets/social-proof-3.jpeg';
+
 const transformations = [
-  { id: 1, image: transform1, name: 'Aluna 1' },
-  { id: 2, image: transform2, name: 'Aluna 2' },
-  { id: 3, image: transform3, name: 'Aluna 3' },
-  { id: 4, image: transform4, name: 'Aluna 4' },
-  { id: 5, image: transform5, name: 'Aluna 5' },
-  { id: 6, image: transform6, name: 'Aluna 6' },
-  { id: 7, image: transform7, name: 'Aluna 7' },
+  { id: 1, image: transform1, name: 'Transformação 1', caption: 'Resultados em 3 meses de acompanhamento' },
+  { id: 2, image: socialProof2, name: 'Acompanhamento Presencial', caption: 'Acompanhamento Personalizado Presencialmente' },
+  { id: 3, image: transform2, name: 'Transformação 2', caption: 'Definição muscular e ganho de força' },
+  { id: 4, image: transform3, name: 'Transformação 3', caption: 'Mudança completa de composição corporal' },
+  { id: 5, image: transform4, name: 'Transformação 4', caption: 'Foco em hipertrofia e definição' },
+  { id: 6, image: transform5, name: 'Transformação 5', caption: 'Evolução consistente com treino personalizado' },
+  { id: 7, image: transform6, name: 'Transformação 6', caption: 'Resultados reais com metodologia científica' },
+  { id: 8, image: transform7, name: 'Transformação 7', caption: 'Transformação física e mental' },
+  { id: 9, image: transform8, name: 'Transformação 8', caption: 'Antes e depois - Compromisso e dedicação' },
+];
+
+const socialProofPhotos = [
+  { id: 1, image: socialProof1, caption: 'Treino presencial com alunas' },
+  { id: 2, image: socialProof2, caption: 'Correção de execução em tempo real' },
+  { id: 3, image: socialProof3, caption: 'Intensidade e foco nos treinos' },
 ];
 
 const testimonials = [
@@ -106,21 +120,52 @@ const TestimonialsSection = () => {
             Transformações <span className="text-primary">Reais</span>
           </h3>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4">
             {transformations.map((item) => (
               <div
                 key={item.id}
-                className="relative cursor-pointer overflow-hidden rounded-lg md:rounded-xl aspect-[3/4] bg-muted"
+                className="relative cursor-pointer overflow-hidden rounded-lg md:rounded-xl aspect-[3/4] bg-muted group"
                 onClick={() => setSelectedImage(item.image)}
               >
                 <img
                   src={item.image}
-                  alt={`Transformação ${item.name}`}
+                  alt={item.name}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover md:transition-transform md:duration-500 md:hover:scale-110"
+                  className="w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 md:hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 md:p-4">
+                  <p className="text-foreground text-xs md:text-sm font-medium">{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Social Proof Section */}
+        <div className="mb-12 md:mb-20">
+          <h3 className="text-center text-xl md:text-2xl font-display font-bold mb-6 md:mb-8">
+            Acompanhamento <span className="text-primary">Presencial</span>
+          </h3>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
+            {socialProofPhotos.map((item) => (
+              <div
+                key={item.id}
+                className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/5] bg-muted group cursor-pointer"
+                onClick={() => setSelectedImage(item.image)}
+              >
+                <img
+                  src={item.image}
+                  alt={item.caption}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-foreground text-sm md:text-base font-medium text-center">{item.caption}</p>
+                </div>
               </div>
             ))}
           </div>

@@ -1,64 +1,68 @@
-import { Check, Star, Zap, Crown } from 'lucide-react';
+import { Check, Zap, Calendar, CalendarDays, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const plans = [
   {
-    name: 'Essencial',
-    description: 'Para quem quer começar sua transformação',
-    price: '197',
-    period: '/mês',
+    name: 'Aula Avulsa',
+    description: 'Para quem quer experimentar',
+    price: '99,90',
+    period: '',
     icon: Zap,
     popular: false,
     features: [
-      'Treino personalizado',
-      'Planilha de treino mensal',
-      'Suporte via WhatsApp',
-      'Análise de evolução mensal',
-      'Acesso ao grupo exclusivo',
+      'Treino Personalizado',
+      'Análise de evolução exclusivo',
     ],
-    notIncluded: [
-      'Acompanhamento nutricional',
-      'Análise de vídeo de execução',
-      'Atendimento prioritário',
-    ],
+    notIncluded: [],
   },
   {
-    name: 'Premium',
-    description: 'O mais escolhido pelos nossos alunos',
-    price: '347',
+    name: 'Mensal',
+    description: 'Para quem quer começar sua transformação',
+    price: '180',
     period: '/mês',
-    icon: Star,
+    icon: Calendar,
+    popular: false,
+    features: [
+      'Treino Personalizado',
+      'Suporte via WhatsApp',
+      'Análise de evolução exclusivo',
+      'Aplicativo de Ficha',
+    ],
+    notIncluded: [],
+  },
+  {
+    name: 'Trimestral',
+    description: 'O mais escolhido pelos nossos alunos',
+    price: '300',
+    period: '/trimestre',
+    icon: CalendarDays,
     popular: true,
     features: [
-      'Treino 100% personalizado',
-      'Planilha de treino semanal',
-      'Suporte via WhatsApp 24h',
-      'Análise de evolução semanal',
+      'Treino Personalizado',
+      'Suporte via WhatsApp',
+      'Análise de evolução exclusivo',
+      'Aplicativo de Ficha',
       'Acesso ao grupo VIP',
-      'Acompanhamento nutricional básico',
       'Análise de vídeo de execução',
     ],
-    notIncluded: [
-      'Atendimento prioritário',
-    ],
+    notIncluded: [],
   },
   {
-    name: 'Elite',
+    name: 'Semestral',
     description: 'Para quem busca resultados extraordinários',
-    price: '597',
-    period: '/mês',
+    price: '540',
+    period: '/semestre',
     icon: Crown,
     popular: false,
     features: [
-      'Treino 100% personalizado',
-      'Ajustes ilimitados de treino',
-      'Suporte VIP via WhatsApp 24h',
-      'Análise de evolução diária',
-      'Acesso a todos os grupos',
-      'Acompanhamento nutricional completo',
-      'Análise de vídeo ilimitada',
-      'Atendimento prioritário',
-      'Chamadas de vídeo mensais',
+      'Treino Personalizado',
+      'Suporte via WhatsApp',
+      'Análise de evolução exclusivo',
+      'Aplicativo de Ficha',
+      'Acesso ao grupo VIP',
+      'Análise de vídeo de execução',
+      'Atendimento Prioritário',
+      'Chamada de Vídeos mensais',
       'Preparação para competições',
     ],
     notIncluded: [],
@@ -96,7 +100,7 @@ const PlansSection = () => {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -129,7 +133,7 @@ const PlansSection = () => {
               {/* Price */}
               <div className="mb-5 sm:mb-6 md:mb-8">
                 <span className="text-muted-foreground text-xs sm:text-sm">R$</span>
-                <span className="font-display font-black text-3xl sm:text-4xl md:text-5xl text-foreground">{plan.price}</span>
+                <span className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-foreground">{plan.price}</span>
                 <span className="text-muted-foreground text-sm">{plan.period}</span>
               </div>
 
@@ -139,12 +143,6 @@ const PlansSection = () => {
                   <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
                     <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-foreground text-xs sm:text-sm">{feature}</span>
-                  </li>
-                ))}
-                {plan.notIncluded.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2 sm:gap-3 opacity-50">
-                    <span className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-muted-foreground flex-shrink-0">—</span>
-                    <span className="text-muted-foreground text-xs sm:text-sm line-through">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -166,8 +164,7 @@ const PlansSection = () => {
 
         {/* Bottom note */}
         <p className="text-center text-muted-foreground text-xs sm:text-sm mt-8 sm:mt-10 md:mt-12 max-w-2xl mx-auto px-2">
-          * Todos os planos incluem acesso à nossa metodologia exclusiva e podem ser cancelados a qualquer momento. 
-          Consulte condições especiais para pacotes trimestrais e semestrais.
+          * Todos os planos incluem acesso à nossa metodologia exclusiva e podem ser cancelados a qualquer momento.
         </p>
       </div>
     </section>
