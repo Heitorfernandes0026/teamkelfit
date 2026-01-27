@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Youtube } from 'lucide-react';
+import logoKelfit from '@/assets/logo-kelfit.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,15 +24,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <a href="#" className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <div className="absolute inset-0 border-2 border-primary rounded-lg rotate-45" />
-                <span className="font-display font-black text-lg text-primary">K</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-sm tracking-wider text-foreground">TEAM</span>
-                <span className="font-display font-black text-xl tracking-tight text-primary -mt-1">KELFIT</span>
-              </div>
+            <a href="#" className="flex items-center mb-4">
+              <img 
+                src={logoKelfit} 
+                alt="Team KelFit" 
+                className="h-10 md:h-12 w-auto"
+              />
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Consultoria fitness premium com foco em resultados reais. 
