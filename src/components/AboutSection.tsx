@@ -49,12 +49,12 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="sobre" className="py-16 md:py-24 relative overflow-hidden">
+    <section id="sobre" className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Image Carousel */}
           <div className="relative order-2 lg:order-1">
             <div className="relative">
@@ -123,25 +123,25 @@ const AboutSection = () => {
 
           {/* Content */}
           <div className="order-1 lg:order-2">
-            <span className="text-primary text-sm font-bold tracking-widest mb-4 block">
+            <span className="text-primary text-xs sm:text-sm font-bold tracking-widest mb-3 sm:mb-4 block">
               SOBRE O PROFESSOR
             </span>
-            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6">
+            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-3 sm:mb-4 md:mb-6">
               KESLEY - KEL<span className="text-primary">FIT</span>
             </h2>
             
-            <div className="space-y-4 text-muted-foreground mb-8">
-              <p className="text-lg leading-relaxed">
+            <div className="space-y-3 sm:space-y-4 text-muted-foreground mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Atleta e Personal Trainer com mais de <strong className="text-foreground">8 anos de experiência</strong> em 
                 transformação corporal e preparação para competições. Conquistou o <strong className="text-foreground">Top 2 
                 em competição nacional de fisiculturismo</strong>, comprovando na prática a eficácia da sua metodologia.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Especialista em <strong className="text-foreground">emagrecimento, hipertrofia e definição muscular</strong>, 
                 desenvolve protocolos individualizados baseados em ciência e experiência prática, garantindo resultados 
                 reais para cada perfil de aluno.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Formado em Educação Física com especializações em treinamento de força, nutrição esportiva e 
                 periodização avançada. Sua abordagem combina <strong className="text-foreground">análise técnica de 
                 movimentos, acompanhamento nutricional</strong> e suporte contínuo para maximizar seus resultados.
@@ -149,15 +149,15 @@ const AboutSection = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="text-center p-4 rounded-xl bg-card/50 border border-border/30 hover:border-primary/30 transition-colors"
+                  className="text-center p-3 sm:p-4 rounded-lg sm:rounded-xl bg-card/50 border border-border/30 hover:border-primary/30 transition-colors"
                 >
-                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="font-display font-black text-2xl text-foreground">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground">{stat.label}</p>
+                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-1.5 sm:mb-2" />
+                  <p className="font-display font-black text-xl sm:text-2xl text-foreground">{stat.value}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">{stat.label}</p>
                 </div>
               ))}
             </div>
