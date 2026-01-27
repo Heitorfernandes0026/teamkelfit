@@ -30,7 +30,7 @@ const HeroSection = () => {
         <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6 animate-fade-in-up max-w-4xl">
           <span className="text-foreground">Feito para o Seu</span>
           <br />
-          <span className="text-gradient-orange">Estilo Fitness.</span>
+          <span className="text-gradient-neon">Estilo Fitness.</span>
         </h1>
 
         {/* Subtitle */}
