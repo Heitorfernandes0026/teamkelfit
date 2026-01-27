@@ -57,42 +57,6 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="mt-12 p-8 md:p-12 rounded-2xl border border-border/30 bg-card/30">
-            <h3 className="font-display font-bold text-2xl mb-2 text-center">Ou deixe seu contato</h3>
-            <p className="text-muted-foreground text-center mb-8">Entraremos em contato em até 24 horas</p>
-            
-            <form className="space-y-4 max-w-xl mx-auto" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Seu nome"
-                  className="w-full px-5 py-4 rounded-xl bg-background border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                />
-                <input
-                  type="tel"
-                  placeholder="Seu telefone"
-                  className="w-full px-5 py-4 rounded-xl bg-background border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                />
-              </div>
-              <input
-                type="email"
-                placeholder="Seu e-mail"
-                className="w-full px-5 py-4 rounded-xl bg-background border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-              />
-              <textarea
-                placeholder="Qual seu principal objetivo fitness?"
-                rows={4}
-                className="w-full px-5 py-4 rounded-xl bg-background border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
-              />
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 text-lg tracking-wide"
-              >
-                ENVIAR MENSAGEM
-              </Button>
-            </form>
-          </div>
         </div>
       </div>
     </section>

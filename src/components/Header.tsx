@@ -16,8 +16,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
+    { href: '#sobre', label: 'SOBRE' },
     { href: '#como-funciona', label: 'METODOLOGIA' },
     { href: '#resultados', label: 'DIFERENCIAIS' },
+    { href: '#planos', label: 'PLANOS' },
     { href: '#depoimentos', label: 'DEPOIMENTOS' },
     { href: '#contato', label: 'CONTATO' },
   ];

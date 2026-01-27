@@ -49,8 +49,8 @@ const DifferentialsSection = () => {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <span className="text-primary text-sm font-bold tracking-widest mb-3 md:mb-4 block">DIFERENCIAIS</span>
-          <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6">
-            POR QUE O <span className="text-gradient-orange">TEAM KELFIT?</span>
+        <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6">
+            POR QUE O <span className="text-foreground">TEAM KEL</span><span className="text-primary">FIT</span>?
           </h2>
           <div className="flex items-center justify-center gap-3 md:gap-4">
             <div className="w-8 md:w-12 h-px bg-primary" />
