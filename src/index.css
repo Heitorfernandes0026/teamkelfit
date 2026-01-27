@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,159 +8,124 @@
   :root {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
-
     --card: 0 0% 7%;
     --card-foreground: 0 0% 100%;
-
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
-
     --primary: 4 82% 56%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 80%;
-
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
-
     --accent: 4 82% 46%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 0 0% 20%;
     --input: 0 0% 15%;
     --ring: 4 82% 56%;
-
     --radius: 0.75rem;
-
-    /* Custom colors */
     --kelfit-red: 4 82% 56%;
     --kelfit-dark-red: 4 82% 46%;
-    --deep-black: 0 0% 0%;
-    --card-dark: 0 0% 7%;
-    --text-gray: 0 0% 80%;
-    --text-muted: 0 0% 50%;
-
-    /* Gradients */
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(0 0% 0%) 100%);
-    --gradient-red: linear-gradient(135deg, hsl(4 82% 56%) 0%, hsl(4 82% 40%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(4 82% 56% / 0.15) 0%, transparent 70%);
-
-    /* Shadows */
-    --shadow-red: 0 0 30px hsl(4 82% 56% / 0.3);
-    --shadow-dark: 0 0 20px hsl(0 0% 0% / 0.5);
   }
 
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+
+  /* Optimize touch targets for mobile */
+  button, a, input, textarea, select {
+    touch-action: manipulation;
   }
 }
 
 @layer components {
-  /* Glassmorphism card */
-  .glass-card {
-    @apply bg-card/50 backdrop-blur-xl border border-white/5 rounded-xl;
+  /* Text gradient - simplified */
+  .text-gradient-orange {
+    @apply text-primary;
   }
 
-  /* Glow effect */
-  .glow-red {
-    box-shadow: var(--shadow-red);
-  }
-
-  .glow-dark {
-    box-shadow: var(--shadow-dark);
-  }
-
-  /* Text gradient */
-  .text-gradient-red {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-red-400;
-  }
-
-  .text-gradient-white {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300;
-  }
-
-  /* Carbon fiber pattern */
-  .carbon-pattern {
-    background-image: 
-      linear-gradient(45deg, hsl(0 0% 8%) 25%, transparent 25%),
-      linear-gradient(-45deg, hsl(0 0% 8%) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, hsl(0 0% 8%) 75%),
-      linear-gradient(-45deg, transparent 75%, hsl(0 0% 8%) 75%);
-    background-size: 4px 4px;
-    background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
-  }
-
-  /* Scroll animations */
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Pulse animation for CTA */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-
-  @keyframes pulseGlow {
-    0%, 100% {
-      box-shadow: 0 0 20px hsl(4 82% 56% / 0.4);
-    }
-    50% {
-      box-shadow: 0 0 40px hsl(4 82% 56% / 0.6);
+  /* Performance: only show complex effects on larger screens */
+  @media (min-width: 768px) {
+    .text-gradient-orange {
+      @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-red-400;
     }
   }
 
-  /* Gradient border */
-  .gradient-border {
-    position: relative;
+  /* Fixed CTA button for mobile */
+  .fixed-cta-mobile {
+    @apply fixed bottom-0 left-0 right-0 z-50 p-4 bg-background/95 backdrop-blur-sm border-t border-border/30;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
 
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, hsl(4 82% 56% / 0.5), hsl(4 82% 40% / 0.3));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+  /* Optimize images */
+  img {
+    @apply max-w-full h-auto;
+    content-visibility: auto;
+  }
+
+  /* Fast transitions */
+  .fast-transition {
+    @apply transition-colors duration-150;
+  }
+
+  /* Touch-friendly buttons */
+  .touch-btn {
+    @apply min-h-[48px] min-w-[48px];
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Hide animations on mobile for performance */
+  @media (max-width: 767px) {
+    .animate-marquee {
+      animation: none !important;
+    }
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Critical: Immediate LCP optimization */
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
   }
 }
