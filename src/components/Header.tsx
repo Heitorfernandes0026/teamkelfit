@@ -40,14 +40,31 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="absolute inset-0 border-2 border-primary rounded-lg rotate-45 group-hover:rotate-[135deg] transition-transform duration-500" />
-              <span className="font-display font-black text-lg text-primary">K</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-bold text-sm tracking-wider text-foreground">TEAM</span>
-              <span className="font-display font-black text-xl tracking-tight text-primary -mt-1">KELFIT</span>
+          <a href="#" className="flex items-center gap-2 group">
+            {/* Runner Icon SVG */}
+            <svg 
+              viewBox="0 0 40 40" 
+              className="w-10 h-10 text-primary"
+              fill="currentColor"
+            >
+              {/* Head */}
+              <circle cx="28" cy="8" r="4" />
+              {/* Body/Running pose */}
+              <path d="M8 32 L14 22 L20 24 L24 16 L30 12 M14 22 L10 16 M20 24 L16 32 M20 24 L26 30" 
+                stroke="currentColor" 
+                strokeWidth="3" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+            {/* Text Logo */}
+            <div className="flex flex-col leading-none">
+              <span className="text-white text-xs font-medium tracking-wide">Team</span>
+              <span className="text-lg font-black tracking-tight">
+                <span className="text-white">Kel</span>
+                <span className="text-primary">Fit</span>
+              </span>
             </div>
           </a>
 
