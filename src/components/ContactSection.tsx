@@ -7,7 +7,7 @@ const ContactSection = () => {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <section id="contato" className="py-24 relative overflow-hidden">
+    <section id="contato" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       

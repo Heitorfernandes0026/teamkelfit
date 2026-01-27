@@ -74,7 +74,7 @@ const PlansSection = () => {
   };
 
   return (
-    <section id="planos" className="py-24 relative overflow-hidden">
+    <section id="planos" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-background" />
       
