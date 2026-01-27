@@ -1,6 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+// Transformation photos
+import transform1 from '@/assets/transformations/transform-1.jpeg';
+import transform2 from '@/assets/transformations/transform-2.jpeg';
+import transform3 from '@/assets/transformations/transform-3.jpeg';
+import transform4 from '@/assets/transformations/transform-4.jpeg';
+import transform5 from '@/assets/transformations/transform-5.jpeg';
+import transform6 from '@/assets/transformations/transform-6.jpeg';
+import transform7 from '@/assets/transformations/transform-7.jpeg';
+import testimonialVideo from '@/assets/transformations/testimonial-video.mp4';
+
+const transformations = [
+  { id: 1, image: transform1, name: 'Aluna 1' },
+  { id: 2, image: transform2, name: 'Aluna 2' },
+  { id: 3, image: transform3, name: 'Aluna 3' },
+  { id: 4, image: transform4, name: 'Aluna 4' },
+  { id: 5, image: transform5, name: 'Aluna 5' },
+  { id: 6, image: transform6, name: 'Aluna 6' },
+  { id: 7, image: transform7, name: 'Aluna 7' },
+];
 
 const testimonials = [
   {
@@ -36,6 +56,7 @@ const testimonials = [
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -78,8 +99,59 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        {/* Testimonial Carousel */}
+        {/* Transformation Photos Gallery */}
+        <div className="mb-20">
+          <h3 className="text-center text-2xl font-display font-bold mb-8">
+            Transformações <span className="text-primary">Reais</span>
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {transformations.map((item) => (
+              <div
+                key={item.id}
+                className="relative group cursor-pointer overflow-hidden rounded-xl aspect-[3/4] bg-muted"
+                onClick={() => setSelectedImage(item.image)}
+              >
+                <img
+                  src={item.image}
+                  alt={`Transformação ${item.name}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-sm font-medium text-foreground">Antes & Depois</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Video Section - Separate */}
+        <div className="mb-20">
+          <h3 className="text-center text-2xl font-display font-bold mb-8">
+            Depoimento em <span className="text-primary">Vídeo</span>
+          </h3>
+          
+          <div className="max-w-2xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[9/16] md:aspect-video">
+              <video
+                src={testimonialVideo}
+                controls
+                className="w-full h-full object-contain bg-black"
+                poster=""
+              >
+                Seu navegador não suporta vídeos.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        {/* Text Testimonial Carousel */}
         <div className="max-w-4xl mx-auto">
+          <h3 className="text-center text-2xl font-display font-bold mb-8">
+            O que nossos alunos <span className="text-primary">dizem</span>
+          </h3>
+          
           <div className="relative">
             {/* Main testimonial card */}
             <div className="relative p-8 md:p-12 rounded-2xl bg-background border border-border/30">
@@ -155,6 +227,26 @@ const TestimonialsSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-foreground/70 hover:text-foreground text-4xl"
+            onClick={() => setSelectedImage(null)}
+          >
+            ×
+          </button>
+          <img
+            src={selectedImage}
+            alt="Transformação ampliada"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg"
+          />
+        </div>
+      )}
     </section>
   );
 };
