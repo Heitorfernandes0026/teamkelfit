@@ -1,5 +1,21 @@
-import { Award, Users, Target, TrendingUp } from 'lucide-react';
-import professorImage from '@/assets/professor-kelfit.png';
+import { useState, useEffect } from 'react';
+import { Award, Users, Target, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+// Professor photos
+import professorImage1 from '@/assets/professor-kelfit.png';
+import professorImage2 from '@/assets/professor-2.jpeg';
+import professorImage3 from '@/assets/professor-3.jpeg';
+import professorImage4 from '@/assets/professor-4.jpeg';
+import professorImage5 from '@/assets/professor-5.jpeg';
+
+const professorPhotos = [
+  { id: 1, image: professorImage1, alt: 'Kesley com troféu' },
+  { id: 2, image: professorImage2, alt: 'Kesley em competição' },
+  { id: 3, image: professorImage3, alt: 'Kesley no palco' },
+  { id: 4, image: professorImage4, alt: 'Kesley no estádio' },
+  { id: 5, image: professorImage5, alt: 'Kesley palestrando' },
+];
 
 const stats = [
   { icon: Users, value: '+500', label: 'Alunos Transformados' },
@@ -9,6 +25,29 @@ const stats = [
 ];
 
 const AboutSection = () => {
+  const [currentPhoto, setCurrentPhoto] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentPhoto((prev) => (prev + 1) % professorPhotos.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const goToPrevious = () => {
+    setIsAutoPlaying(false);
+    setCurrentPhoto((prev) => (prev - 1 + professorPhotos.length) % professorPhotos.length);
+  };
+
+  const goToNext = () => {
+    setIsAutoPlaying(false);
+    setCurrentPhoto((prev) => (prev + 1) % professorPhotos.length);
+  };
+
   return (
     <section id="sobre" className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -16,22 +55,63 @@ const AboutSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+          {/* Image Carousel */}
           <div className="relative order-2 lg:order-1">
             <div className="relative">
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-2xl" />
               
-              {/* Main image */}
-              <div className="relative rounded-2xl overflow-hidden border border-border/30">
-                <img
-                  src={professorImage}
-                  alt="Professor Kesly - Team KelFit"
-                  className="w-full h-auto object-cover"
-                />
+              {/* Main image carousel */}
+              <div className="relative rounded-2xl overflow-hidden border border-border/30 aspect-[3/4]">
+                {professorPhotos.map((photo, index) => (
+                  <img
+                    key={photo.id}
+                    src={photo.image}
+                    alt={photo.alt}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      index === currentPhoto ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ))}
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                
+                {/* Navigation arrows */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={goToPrevious}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 border-border/50 hover:border-primary hover:bg-primary/10"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={goToNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 border-border/50 hover:border-primary hover:bg-primary/10"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+
+                {/* Dots indicator */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  {professorPhotos.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setIsAutoPlaying(false);
+                        setCurrentPhoto(index);
+                      }}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        index === currentPhoto
+                          ? 'bg-primary w-6'
+                          : 'bg-foreground/30 hover:bg-foreground/50 w-2'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
               
               {/* Floating badge */}
@@ -47,7 +127,7 @@ const AboutSection = () => {
               SOBRE O PROFESSOR
             </span>
             <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-6">
-              KESLY <span className="text-gradient-orange">SILVA</span>
+              KESLEY - <span className="text-gradient-orange">KELFIT</span>
             </h2>
             
             <div className="space-y-4 text-muted-foreground mb-8">
