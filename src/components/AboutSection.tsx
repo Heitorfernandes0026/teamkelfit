@@ -49,7 +49,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="sobre" className="py-24 relative overflow-hidden">
+    <section id="sobre" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
       
@@ -126,8 +126,8 @@ const AboutSection = () => {
             <span className="text-primary text-sm font-bold tracking-widest mb-4 block">
               SOBRE O PROFESSOR
             </span>
-            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-6">
-              KESLEY - <span className="text-gradient-orange">KELFIT</span>
+            <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6">
+              KESLEY - KEL<span className="text-primary">FIT</span>
             </h2>
             
             <div className="space-y-4 text-muted-foreground mb-8">

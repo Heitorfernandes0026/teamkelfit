@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote, Play } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import WorkoutMarquee from './WorkoutMarquee';
 
 // Transformation photos
 import transform1 from '@/assets/transformations/transform-1.jpeg';
@@ -79,7 +80,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="depoimentos" className="py-24 relative overflow-hidden">
+    <section id="depoimentos" className="py-16 md:py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-card/50" />
       
@@ -89,56 +90,55 @@ const TestimonialsSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-primary text-sm font-bold tracking-widest mb-4 block">DEPOIMENTOS</span>
-          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <span className="text-primary text-sm font-bold tracking-widest mb-3 md:mb-4 block">DEPOIMENTOS</span>
+          <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 md:mb-4">
             HISTÓRIAS DE <span className="text-gradient-orange">SUCESSO</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
             Veja o que nossos alunos têm a dizer sobre a experiência com o Team KelFit.
           </p>
         </div>
 
         {/* Transformation Photos Gallery */}
-        <div className="mb-20">
-          <h3 className="text-center text-2xl font-display font-bold mb-8">
+        <div className="mb-12 md:mb-20">
+          <h3 className="text-center text-xl md:text-2xl font-display font-bold mb-6 md:mb-8">
             Transformações <span className="text-primary">Reais</span>
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
             {transformations.map((item) => (
               <div
                 key={item.id}
-                className="relative group cursor-pointer overflow-hidden rounded-xl aspect-[3/4] bg-muted"
+                className="relative cursor-pointer overflow-hidden rounded-lg md:rounded-xl aspect-[3/4] bg-muted"
                 onClick={() => setSelectedImage(item.image)}
               >
                 <img
                   src={item.image}
                   alt={`Transformação ${item.name}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover md:transition-transform md:duration-500 md:hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-sm font-medium text-foreground">Antes & Depois</span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 md:hover:opacity-100 transition-opacity" />
               </div>
             ))}
           </div>
         </div>
 
         {/* Video Section - Separate */}
-        <div className="mb-20">
-          <h3 className="text-center text-2xl font-display font-bold mb-8">
+        <div className="mb-12 md:mb-20">
+          <h3 className="text-center text-xl md:text-2xl font-display font-bold mb-6 md:mb-8">
             Depoimento em <span className="text-primary">Vídeo</span>
           </h3>
           
-          <div className="max-w-2xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[9/16] md:aspect-video">
+          <div className="max-w-lg md:max-w-2xl mx-auto">
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden bg-muted aspect-[9/16] md:aspect-video">
               <video
                 src={testimonialVideo}
                 controls
+                preload="metadata"
                 className="w-full h-full object-contain bg-black"
-                poster=""
               >
                 Seu navegador não suporta vídeos.
               </video>
@@ -148,57 +148,57 @@ const TestimonialsSection = () => {
 
         {/* Text Testimonial Carousel */}
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-center text-2xl font-display font-bold mb-8">
+          <h3 className="text-center text-xl md:text-2xl font-display font-bold mb-6 md:mb-8">
             O que nossos alunos <span className="text-primary">dizem</span>
           </h3>
           
           <div className="relative">
             {/* Main testimonial card */}
-            <div className="relative p-8 md:p-12 rounded-2xl bg-background border border-border/30">
-              {/* Quote icon */}
-              <Quote className="absolute top-8 left-8 w-16 h-16 text-primary/10" />
+            <div className="relative p-6 md:p-8 lg:p-12 rounded-xl md:rounded-2xl bg-background border border-border/30">
+              {/* Quote icon - Hidden on mobile */}
+              <Quote className="hidden md:block absolute top-8 left-8 w-16 h-16 text-primary/10" />
               
               <div className="relative z-10">
                 {/* Rating */}
-                <div className="flex gap-1 mb-8 justify-center">
+                <div className="flex gap-1 mb-6 md:mb-8 justify-center">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-primary text-primary" />
                   ))}
                 </div>
 
                 {/* Text */}
-                <p className="text-xl md:text-2xl text-center leading-relaxed mb-10 font-light">
+                <p className="text-base md:text-xl lg:text-2xl text-center leading-relaxed mb-6 md:mb-10 font-light">
                   "{testimonials[currentIndex].text}"
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center justify-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
-                    <span className="font-display font-bold text-primary text-lg">
+                <div className="flex items-center justify-center gap-3 md:gap-4">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
+                    <span className="font-display font-bold text-primary text-sm md:text-lg">
                       {testimonials[currentIndex].avatar}
                     </span>
                   </div>
                   <div className="text-left">
-                    <p className="font-display font-bold text-lg">{testimonials[currentIndex].name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonials[currentIndex].role}</p>
+                    <p className="font-display font-bold text-base md:text-lg">{testimonials[currentIndex].name}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground">{testimonials[currentIndex].role}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-6 mt-8">
+            <div className="flex items-center justify-center gap-4 md:gap-6 mt-6 md:mt-8">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={goToPrevious}
-                className="w-12 h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
 
               {/* Dots */}
-              <div className="flex gap-3">
+              <div className="flex gap-2 md:gap-3">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
@@ -206,9 +206,9 @@ const TestimonialsSection = () => {
                       setIsAutoPlaying(false);
                       setCurrentIndex(index);
                     }}
-                    className={`h-2 rounded-full transition-all duration-300 ${
+                    className={`h-2 rounded-full transition-all ${
                       index === currentIndex
-                        ? 'bg-primary w-8'
+                        ? 'bg-primary w-6 md:w-8'
                         : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2'
                     }`}
                   />
@@ -219,13 +219,18 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={goToNext}
-                className="w-12 h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Workout Marquee */}
+      <div className="mt-16 md:mt-20">
+        <WorkoutMarquee />
       </div>
 
       {/* Lightbox Modal */}
