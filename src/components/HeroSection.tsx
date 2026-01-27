@@ -29,8 +29,10 @@ const HeroSection = () => {
         <div className="max-w-2xl">
           {/* Main title */}
           <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 animate-fade-in-up">
-            <span className="text-foreground">Team KelFit</span>
-            <span className="text-primary"> — </span>
+            <span className="text-foreground">Team </span>
+            <span className="text-foreground">Kel</span>
+            <span className="text-primary">Fit</span>
+            <br />
             <span className="text-foreground">Não é apenas mais um treino.</span>
             <br />
             <span className="text-primary">É o seu novo padrão de resultados.</span>
