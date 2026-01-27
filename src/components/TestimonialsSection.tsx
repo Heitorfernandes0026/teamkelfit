@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Star, ChevronLeft, ChevronRight, Quote, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 // Transformation photos
 import transform1 from '@/assets/transformations/transform-1.jpeg';
@@ -7,16 +8,18 @@ import transform2 from '@/assets/transformations/transform-2.jpeg';
 import transform3 from '@/assets/transformations/transform-3.jpeg';
 import transform4 from '@/assets/transformations/transform-4.jpeg';
 import transform5 from '@/assets/transformations/transform-5.jpeg';
+import transform6 from '@/assets/transformations/transform-6.jpeg';
 import transform7 from '@/assets/transformations/transform-7.jpeg';
 import testimonialVideo from '@/assets/transformations/testimonial-video.mp4';
 
 const transformations = [
-  { id: 1, image: transform1 },
-  { id: 2, image: transform2 },
-  { id: 3, image: transform3 },
-  { id: 4, image: transform4 },
-  { id: 5, image: transform5 },
-  { id: 7, image: transform7 },
+  { id: 1, image: transform1, name: 'Aluna 1' },
+  { id: 2, image: transform2, name: 'Aluna 2' },
+  { id: 3, image: transform3, name: 'Aluna 3' },
+  { id: 4, image: transform4, name: 'Aluna 4' },
+  { id: 5, image: transform5, name: 'Aluna 5' },
+  { id: 6, image: transform6, name: 'Aluna 6' },
+  { id: 7, image: transform7, name: 'Aluna 7' },
 ];
 
 const testimonials = [
@@ -24,153 +27,202 @@ const testimonials = [
     name: 'Rafael Mendes',
     role: 'Empresário',
     avatar: 'RM',
-    text: 'Em 6 meses, perdi 15kg e ganhei massa muscular. Mudou minha vida!',
+    rating: 5,
+    text: 'Em 6 meses, perdi 15kg e ganhei massa muscular. O suporte do Team KelFit é incomparável. Mudou minha vida completamente!',
   },
   {
     name: 'Ana Paula Silva',
     role: 'Advogada',
     avatar: 'AS',
-    text: 'Resultados incríveis com treinos de apenas 45 minutos. Recomendo!',
+    rating: 5,
+    text: 'Finalmente encontrei uma consultoria que entende minha rotina corrida. Resultados incríveis com treinos de apenas 45 minutos.',
   },
   {
     name: 'Carlos Eduardo',
     role: 'Médico',
     avatar: 'CE',
-    text: 'A metodologia científica fez toda a diferença nos meus resultados.',
+    rating: 5,
+    text: 'A metodologia científica e o acompanhamento nutricional fizeram toda a diferença. Recomendo a todos que buscam excelência.',
+  },
+  {
+    name: 'Juliana Costa',
+    role: 'Atleta Amadora',
+    avatar: 'JC',
+    rating: 5,
+    text: 'Preparação perfeita para minha primeira competição. O suporte 24h me deu confiança para alcançar o pódio!',
   },
 ];
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
   const goToPrevious = () => {
+    setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const goToNext = () => {
+    setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   return (
-    <section id="depoimentos" className="py-16 md:py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="depoimentos" className="py-24 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-card/50" />
+      
+      {/* Decorative lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <span className="text-primary text-xs md:text-sm font-bold tracking-widest mb-3 block">RESULTADOS</span>
-          <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-3">
-            HISTÓRIAS DE <span className="text-primary">SUCESSO</span>
+        <div className="text-center mb-16">
+          <span className="text-primary text-sm font-bold tracking-widest mb-4 block">DEPOIMENTOS</span>
+          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-4">
+            HISTÓRIAS DE <span className="text-gradient-orange">SUCESSO</span>
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
-            Transformações reais dos nossos alunos.
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Veja o que nossos alunos têm a dizer sobre a experiência com o Team KelFit.
           </p>
         </div>
 
-        {/* Transformation Photos Gallery - Horizontal scroll on mobile */}
-        <div className="mb-12 md:mb-16">
-          <h3 className="text-center text-lg md:text-xl font-display font-bold mb-6">
-            Antes & Depois
+        {/* Transformation Photos Gallery */}
+        <div className="mb-20">
+          <h3 className="text-center text-2xl font-display font-bold mb-8">
+            Transformações <span className="text-primary">Reais</span>
           </h3>
           
-          <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 lg:grid-cols-6 md:gap-4 md:overflow-visible">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {transformations.map((item) => (
               <div
                 key={item.id}
-                className="flex-shrink-0 w-[45vw] md:w-auto snap-center cursor-pointer"
+                className="relative group cursor-pointer overflow-hidden rounded-xl aspect-[3/4] bg-muted"
                 onClick={() => setSelectedImage(item.image)}
               >
-                <div className="aspect-[3/4] rounded-xl overflow-hidden bg-muted">
-                  <img
-                    src={item.image}
-                    alt="Transformação"
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
+                <img
+                  src={item.image}
+                  alt={`Transformação ${item.name}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="text-sm font-medium text-foreground">Antes & Depois</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Video Section */}
-        <div className="mb-12 md:mb-16">
-          <h3 className="text-center text-lg md:text-xl font-display font-bold mb-6">
-            Depoimento em Vídeo
+        {/* Video Section - Separate */}
+        <div className="mb-20">
+          <h3 className="text-center text-2xl font-display font-bold mb-8">
+            Depoimento em <span className="text-primary">Vídeo</span>
           </h3>
           
-          <div className="max-w-sm mx-auto">
-            <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[9/16]">
+          <div className="max-w-2xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[9/16] md:aspect-video">
               <video
                 src={testimonialVideo}
                 controls
-                preload="metadata"
                 className="w-full h-full object-contain bg-black"
-                playsInline
-              />
+                poster=""
+              >
+                Seu navegador não suporta vídeos.
+              </video>
             </div>
           </div>
         </div>
 
-        {/* Text Testimonials - Simplified carousel */}
-        <div className="max-w-2xl mx-auto">
-          <div className="relative p-6 md:p-8 rounded-2xl bg-card/50 border border-border/30">
-            <Quote className="absolute top-4 left-4 w-8 h-8 text-primary/20" />
-            
-            {/* Rating */}
-            <div className="flex gap-1 mb-4 justify-center">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-              ))}
-            </div>
+        {/* Text Testimonial Carousel */}
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-center text-2xl font-display font-bold mb-8">
+            O que nossos alunos <span className="text-primary">dizem</span>
+          </h3>
+          
+          <div className="relative">
+            {/* Main testimonial card */}
+            <div className="relative p-8 md:p-12 rounded-2xl bg-background border border-border/30">
+              {/* Quote icon */}
+              <Quote className="absolute top-8 left-8 w-16 h-16 text-primary/10" />
+              
+              <div className="relative z-10">
+                {/* Rating */}
+                <div className="flex gap-1 mb-8 justify-center">
+                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  ))}
+                </div>
 
-            {/* Text */}
-            <p className="text-base md:text-lg text-center leading-relaxed mb-6">
-              "{testimonials[currentIndex].text}"
-            </p>
+                {/* Text */}
+                <p className="text-xl md:text-2xl text-center leading-relaxed mb-10 font-light">
+                  "{testimonials[currentIndex].text}"
+                </p>
 
-            {/* Author */}
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
-                <span className="font-bold text-primary text-sm">
-                  {testimonials[currentIndex].avatar}
-                </span>
-              </div>
-              <div className="text-left">
-                <p className="font-bold text-sm">{testimonials[currentIndex].name}</p>
-                <p className="text-xs text-muted-foreground">{testimonials[currentIndex].role}</p>
+                {/* Author */}
+                <div className="flex items-center justify-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
+                    <span className="font-display font-bold text-primary text-lg">
+                      {testimonials[currentIndex].avatar}
+                    </span>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-display font-bold text-lg">{testimonials[currentIndex].name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonials[currentIndex].role}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-6">
-              <button
+            <div className="flex items-center justify-center gap-6 mt-8">
+              <Button
+                variant="outline"
+                size="icon"
                 onClick={goToPrevious}
-                className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center touch-btn fast-transition hover:border-primary"
-                aria-label="Depoimento anterior"
+                className="w-12 h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
               >
                 <ChevronLeft className="w-5 h-5" />
-              </button>
+              </Button>
 
-              <div className="flex gap-2">
+              {/* Dots */}
+              <div className="flex gap-3">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`h-2 rounded-full transition-all ${
-                      index === currentIndex ? 'bg-primary w-6' : 'bg-muted-foreground/30 w-2'
+                    onClick={() => {
+                      setIsAutoPlaying(false);
+                      setCurrentIndex(index);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? 'bg-primary w-8'
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2'
                     }`}
-                    aria-label={`Ir para depoimento ${index + 1}`}
                   />
                 ))}
               </div>
 
-              <button
+              <Button
+                variant="outline"
+                size="icon"
                 onClick={goToNext}
-                className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center touch-btn fast-transition hover:border-primary"
-                aria-label="Próximo depoimento"
+                className="w-12 h-12 rounded-full border-border/50 hover:border-primary hover:bg-primary/10"
               >
                 <ChevronRight className="w-5 h-5" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -183,16 +235,15 @@ const TestimonialsSection = () => {
           onClick={() => setSelectedImage(null)}
         >
           <button
-            className="absolute top-4 right-4 text-foreground/70 hover:text-foreground text-4xl touch-btn"
+            className="absolute top-4 right-4 text-foreground/70 hover:text-foreground text-4xl"
             onClick={() => setSelectedImage(null)}
-            aria-label="Fechar"
           >
             ×
           </button>
           <img
             src={selectedImage}
             alt="Transformação ampliada"
-            className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg"
           />
         </div>
       )}
