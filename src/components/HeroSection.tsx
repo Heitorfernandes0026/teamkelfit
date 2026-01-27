@@ -17,7 +17,7 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Team KelFit"
-          className="w-full h-full object-cover object-[70%_15%]"
+          className="w-full h-full object-cover object-[center_20%]"
         />
         {/* Dark overlay - gradient from left for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
