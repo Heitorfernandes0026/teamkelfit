@@ -178,16 +178,23 @@ const TestimonialsSection = () => {
           </h3>
           
           <div className="max-w-lg md:max-w-2xl mx-auto">
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden bg-muted aspect-[9/16] md:aspect-video">
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden bg-black aspect-[9/16] md:aspect-video border-4 border-primary shadow-[0_0_30px_hsl(4_82%_56%_/_0.4)]">
               <video
                 src={testimonialVideo}
                 controls
                 preload="metadata"
-                className="w-full h-full object-contain bg-black"
+                className="w-full h-full object-contain"
               >
                 Seu navegador não suporta vídeos.
               </video>
+              {/* Play indicator overlay */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/80 flex items-center justify-center">
+                  <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1" />
+                </div>
+              </div>
             </div>
+            <p className="text-center text-muted-foreground text-sm mt-3">Clique para reproduzir o vídeo</p>
           </div>
         </div>
 
