@@ -132,7 +132,7 @@ const AboutSection = () => {
             
             <div className="space-y-3 sm:space-y-4 text-muted-foreground mb-6 sm:mb-8">
               <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                Atleta e Personal Trainer com mais de <strong className="text-foreground">8 anos de experiência</strong> em 
+                Atleta e Treinador com mais de <strong className="text-foreground">8 anos de experiência</strong> em
                 transformação corporal e preparação para competições. Conquistou o <strong className="text-foreground">Top 2 
                 em competição nacional de fisiculturismo</strong>, comprovando na prática a eficácia da sua metodologia.
               </p>
