@@ -15,8 +15,8 @@
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 90 100% 50%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 4 82% 56%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 80%;
@@ -24,21 +24,21 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 180 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 4 82% 46%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 20%;
     --input: 0 0% 15%;
-    --ring: 90 100% 50%;
+    --ring: 4 82% 56%;
 
     --radius: 0.75rem;
 
     /* Custom colors */
-    --neon-green: 90 100% 50%;
-    --electric-blue: 180 100% 50%;
+    --kelfit-red: 4 82% 56%;
+    --kelfit-dark-red: 4 82% 46%;
     --deep-black: 0 0% 0%;
     --card-dark: 0 0% 7%;
     --text-gray: 0 0% 80%;
@@ -46,12 +46,12 @@
 
     /* Gradients */
     --gradient-dark: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(0 0% 0%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(90 100% 50%) 0%, hsl(120 100% 40%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(90 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-red: linear-gradient(135deg, hsl(4 82% 56%) 0%, hsl(4 82% 40%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(4 82% 56% / 0.15) 0%, transparent 70%);
 
     /* Shadows */
-    --shadow-neon: 0 0 30px hsl(90 100% 50% / 0.3);
-    --shadow-blue: 0 0 20px hsl(180 100% 50% / 0.2);
+    --shadow-red: 0 0 30px hsl(4 82% 56% / 0.3);
+    --shadow-dark: 0 0 20px hsl(0 0% 0% / 0.5);
   }
 
   .dark {
@@ -86,21 +86,21 @@
   }
 
   /* Glow effect */
-  .glow-neon {
-    box-shadow: var(--shadow-neon);
+  .glow-red {
+    box-shadow: var(--shadow-red);
   }
 
-  .glow-blue {
-    box-shadow: var(--shadow-blue);
+  .glow-dark {
+    box-shadow: var(--shadow-dark);
   }
 
   /* Text gradient */
-  .text-gradient-neon {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-lime-300;
+  .text-gradient-red {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-red-400;
   }
 
-  .text-gradient-blue {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-cyan-300;
+  .text-gradient-white {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300;
   }
 
   /* Carbon fiber pattern */
@@ -133,10 +133,10 @@
 
   @keyframes pulseGlow {
     0%, 100% {
-      box-shadow: 0 0 20px hsl(90 100% 50% / 0.4);
+      box-shadow: 0 0 20px hsl(4 82% 56% / 0.4);
     }
     50% {
-      box-shadow: 0 0 40px hsl(90 100% 50% / 0.6);
+      box-shadow: 0 0 40px hsl(4 82% 56% / 0.6);
     }
   }
 
@@ -151,7 +151,7 @@
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, hsl(90 100% 50% / 0.5), hsl(180 100% 50% / 0.3));
+    background: linear-gradient(135deg, hsl(4 82% 56% / 0.5), hsl(4 82% 40% / 0.3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
