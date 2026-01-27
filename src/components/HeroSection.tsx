@@ -13,18 +13,18 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-background">
-      {/* Background Image - Optimized for mobile-first */}
-      <div className="absolute inset-0 flex justify-center md:justify-end">
+      {/* Background Image - Full coverage starting after header */}
+      <div className="absolute inset-0 top-16 md:top-20">
         <img
           src={heroImage}
           alt="Team KelFit"
           loading="eager"
           decoding="async"
-          className="h-full w-auto max-w-none object-cover md:object-contain object-center md:object-right"
+          className="absolute inset-0 w-full h-full object-cover object-top md:object-[center_15%]"
         />
         {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 md:via-background/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 md:via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
       </div>
 
       {/* Content - Responsive layout */}
