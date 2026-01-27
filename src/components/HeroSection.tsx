@@ -19,9 +19,9 @@ const HeroSection = () => {
           alt="Team KelFit"
           className="w-full h-full object-cover object-[70%_15%]"
         />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
-        <div className="absolute inset-0 bg-background/40" />
+        {/* Dark overlay for text readability - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/80" />
+        <div className="absolute inset-0 bg-background/10" />
       </div>
 
       {/* Content - Centered */}
