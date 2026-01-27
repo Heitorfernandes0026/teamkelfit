@@ -69,6 +69,10 @@ const AboutSection = () => {
                     key={photo.id}
                     src={photo.image}
                     alt={photo.alt}
+                    width={600}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                       index === currentPhoto ? 'opacity-100' : 'opacity-0'
                     }`}
