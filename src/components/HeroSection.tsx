@@ -12,15 +12,15 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden bg-background">
-      {/* Background Image - Full coverage with cover and center positioning */}
-      <div 
-        className="absolute inset-0 top-16 md:top-20"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
+      {/* LCP-optimized Hero Image with priority loading */}
+      <img
+        src={heroImage}
+        alt="Team KelFit - Consultoria Fitness Premium"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
+        decoding="sync"
+        className="absolute inset-0 top-16 md:top-20 w-full h-full object-cover object-center"
       />
 
       {/* Content - Responsive layout with flexbox centering */}

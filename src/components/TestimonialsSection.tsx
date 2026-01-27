@@ -130,6 +130,8 @@ const TestimonialsSection = () => {
                 <img
                   src={item.image}
                   alt={item.name}
+                  width={400}
+                  height={533}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-110"
@@ -158,6 +160,8 @@ const TestimonialsSection = () => {
                 <img
                   src={item.image}
                   alt={item.caption}
+                  width={400}
+                  height={500}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105"
@@ -285,7 +289,7 @@ const TestimonialsSection = () => {
         <WorkoutMarquee />
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal - Lazy rendered */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
@@ -294,12 +298,16 @@ const TestimonialsSection = () => {
           <button
             className="absolute top-4 right-4 text-foreground/70 hover:text-foreground text-4xl"
             onClick={() => setSelectedImage(null)}
+            aria-label="Fechar"
           >
             ×
           </button>
           <img
             src={selectedImage}
             alt="Transformação ampliada"
+            width={800}
+            height={1067}
+            decoding="async"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
           />
         </div>
