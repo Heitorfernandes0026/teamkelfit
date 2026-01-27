@@ -51,8 +51,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        burnt: {
-          orange: "hsl(var(--burnt-orange))",
+        neon: {
+          green: "hsl(var(--neon-green))",
         },
         electric: {
           blue: "hsl(var(--electric-blue))",
@@ -97,8 +97,8 @@ export default {
           "50%": { transform: "translateY(-10px)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(27 100% 50% / 0.4)" },
-          "50%": { boxShadow: "0 0 40px hsl(27 100% 50% / 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(90 100% 50% / 0.4)" },
+          "50%": { boxShadow: "0 0 40px hsl(90 100% 50% / 0.6)" },
         },
         "marquee": {
           "0%": { transform: "translateX(0%)" },
