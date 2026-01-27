@@ -40,30 +40,58 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            {/* Runner Icon SVG */}
+          <a href="#" className="flex items-center gap-1 group">
+            {/* Runner Icon SVG - Identical to reference */}
             <svg 
-              viewBox="0 0 40 40" 
-              className="w-10 h-10 text-primary"
-              fill="currentColor"
+              viewBox="0 0 50 50" 
+              className="w-12 h-12"
+              fill="none"
             >
               {/* Head */}
-              <circle cx="28" cy="8" r="4" />
-              {/* Body/Running pose */}
-              <path d="M8 32 L14 22 L20 24 L24 16 L30 12 M14 22 L10 16 M20 24 L16 32 M20 24 L26 30" 
-                stroke="currentColor" 
-                strokeWidth="3" 
+              <circle cx="38" cy="10" r="5" fill="#E53935" />
+              {/* Running figure body */}
+              <path 
+                d="M10 42 L18 28 L26 32 L30 22 L40 14" 
+                stroke="#E53935" 
+                strokeWidth="4" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Left arm */}
+              <path 
+                d="M18 28 L12 18" 
+                stroke="#E53935" 
+                strokeWidth="4" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Right arm */}
+              <path 
+                d="M30 22 L38 26" 
+                stroke="#E53935" 
+                strokeWidth="4" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Back leg */}
+              <path 
+                d="M26 32 L32 42" 
+                stroke="#E53935" 
+                strokeWidth="4" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
                 fill="none"
               />
             </svg>
-            {/* Text Logo */}
-            <div className="flex flex-col leading-none">
-              <span className="text-white text-xs font-medium tracking-wide">Team</span>
-              <span className="text-lg font-black tracking-tight">
+            {/* Text Logo - Identical to reference */}
+            <div className="flex flex-col leading-none -ml-1">
+              <span className="text-white text-[11px] font-semibold tracking-wide italic">Team</span>
+              <span className="text-xl font-black tracking-tight -mt-0.5">
                 <span className="text-white">Kel</span>
-                <span className="text-primary">Fit</span>
+                <span className="text-[#E53935]">Fit</span>
               </span>
             </div>
           </a>
