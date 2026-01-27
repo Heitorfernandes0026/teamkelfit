@@ -21,11 +21,7 @@ const HeroSection = () => {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
-      >
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/40 md:via-background/60 md:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
-      </div>
+      />
 
       {/* Content - Responsive layout with flexbox centering */}
       <div className="relative z-20 container mx-auto px-4 sm:px-6 min-h-[80vh] md:min-h-screen flex flex-col justify-center items-start pt-20 md:pt-24 pb-24 md:pb-28">
