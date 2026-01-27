@@ -1,3 +1,4 @@
+import { memo, useCallback } from 'react';
 import { Check, Zap, Calendar, CalendarDays, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -69,13 +70,13 @@ const plans = [
   },
 ];
 
-const PlansSection = () => {
-  const handleWhatsApp = (planName: string) => {
+const PlansSection = memo(() => {
+  const handleWhatsApp = useCallback((planName: string) => {
     const message = encodeURIComponent(
       `Olá! Tenho interesse no plano ${planName} do Team KelFit. Gostaria de saber mais informações.`
     );
     window.open(`https://wa.me/5531991741310?text=${message}`, '_blank');
-  };
+  }, []);
 
   return (
     <section id="planos" className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
@@ -169,6 +170,8 @@ const PlansSection = () => {
       </div>
     </section>
   );
-};
+});
+
+PlansSection.displayName = 'PlansSection';
 
 export default PlansSection;

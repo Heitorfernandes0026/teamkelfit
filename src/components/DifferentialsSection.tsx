@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Sparkles, Headphones, FlaskConical, Trophy, Target, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -34,7 +35,7 @@ const differentials = [
   },
 ];
 
-const DifferentialsSection = () => {
+const DifferentialsSection = memo(() => {
   const { ref, visibleItems } = useScrollAnimation(differentials.length);
 
   return (
@@ -112,6 +113,8 @@ const DifferentialsSection = () => {
       </div>
     </section>
   );
-};
+});
+
+DifferentialsSection.displayName = 'DifferentialsSection';
 
 export default DifferentialsSection;

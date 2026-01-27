@@ -65,15 +65,35 @@
 
   html {
     scroll-behavior: smooth;
+    /* Optimize for performance */
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Prevent CLS from font loading */
+    font-display: swap;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    font-display: swap;
+  }
+
+  /* Optimize image rendering and prevent CLS */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    /* Prevent layout shift */
+    aspect-ratio: attr(width) / attr(height);
+  }
+
+  /* GPU acceleration for animations */
+  .will-change-transform {
+    will-change: transform;
   }
 }
 

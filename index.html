@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Optimized font loading with display=swap for better LCP -->
+    <!-- Optimized font loading with display=swap for better LCP and CLS prevention -->
     <link 
       rel="preload" 
       as="style" 
@@ -45,6 +45,19 @@
     <meta name="twitter:title" content="Team KelFit - Consultoria Fitness Premium" />
     <meta name="twitter:description" content="Protocolos 100% individuais com análise técnica de movimentos e suporte direto via WhatsApp." />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Critical CSS for preventing FOUT/CLS -->
+    <style>
+      /* Font fallback sizing to prevent CLS */
+      html { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', system-ui, -apple-system, sans-serif; }
+      
+      /* Reserve space for hero image to prevent CLS */
+      #root { min-height: 100vh; }
+      
+      /* Prevent layout shift from images */
+      img { content-visibility: auto; }
+    </style>
   </head>
 
   <body>

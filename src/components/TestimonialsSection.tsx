@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import WorkoutMarquee from './WorkoutMarquee';
@@ -68,7 +68,7 @@ const testimonials = [
   },
 ];
 
-const TestimonialsSection = () => {
+const TestimonialsSection = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -83,15 +83,23 @@ const TestimonialsSection = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  }, []);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
+  }, []);
+
+  const handleImageClick = useCallback((image: string) => {
+    setSelectedImage(image);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setSelectedImage(null);
+  }, []);
 
   return (
     <section id="depoimentos" className="py-16 md:py-24 relative overflow-hidden">
@@ -121,19 +129,20 @@ const TestimonialsSection = () => {
           </h3>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4">
-            {transformations.map((item) => (
+            {transformations.map((item, index) => (
               <div
                 key={item.id}
                 className="relative cursor-pointer overflow-hidden rounded-lg md:rounded-xl aspect-[3/4] bg-muted group"
-                onClick={() => setSelectedImage(item.image)}
+                onClick={() => handleImageClick(item.image)}
               >
                 <img
                   src={item.image}
                   alt={item.name}
                   width={400}
                   height={533}
-                  loading="lazy"
+                  loading={index < 3 ? "eager" : "lazy"}
                   decoding="async"
+                  style={{ contentVisibility: 'auto', containIntrinsicSize: '400px 533px' }}
                   className="w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 md:p-4">
@@ -155,7 +164,7 @@ const TestimonialsSection = () => {
               <div
                 key={item.id}
                 className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/5] bg-muted group cursor-pointer"
-                onClick={() => setSelectedImage(item.image)}
+                onClick={() => handleImageClick(item.image)}
               >
                 <img
                   src={item.image}
@@ -164,6 +173,7 @@ const TestimonialsSection = () => {
                   height={500}
                   loading="lazy"
                   decoding="async"
+                  style={{ contentVisibility: 'auto', containIntrinsicSize: '400px 500px' }}
                   className="w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
@@ -186,7 +196,10 @@ const TestimonialsSection = () => {
               <video
                 src={testimonialVideo}
                 controls
-                preload="metadata"
+                preload="none"
+                poster=""
+                width={640}
+                height={360}
                 className="w-full h-full object-contain"
               >
                 Seu navegador não suporta vídeos.
@@ -293,11 +306,11 @@ const TestimonialsSection = () => {
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={closeLightbox}
         >
           <button
             className="absolute top-4 right-4 text-foreground/70 hover:text-foreground text-4xl"
-            onClick={() => setSelectedImage(null)}
+            onClick={closeLightbox}
             aria-label="Fechar"
           >
             ×
@@ -307,6 +320,7 @@ const TestimonialsSection = () => {
             alt="Transformação ampliada"
             width={800}
             height={1067}
+            loading="eager"
             decoding="async"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
           />
@@ -314,6 +328,8 @@ const TestimonialsSection = () => {
       )}
     </section>
   );
-};
+});
+
+TestimonialsSection.displayName = 'TestimonialsSection';
 
 export default TestimonialsSection;

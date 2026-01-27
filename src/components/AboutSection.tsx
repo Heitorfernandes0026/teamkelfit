@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
 import { Award, Users, Target, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -24,7 +24,7 @@ const stats = [
   { icon: TrendingUp, value: 'Top 7', label: 'BopGames Profissional' },
 ];
 
-const AboutSection = () => {
+const AboutSection = memo(() => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -38,15 +38,20 @@ const AboutSection = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setIsAutoPlaying(false);
     setCurrentPhoto((prev) => (prev - 1 + professorPhotos.length) % professorPhotos.length);
-  };
+  }, []);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setIsAutoPlaying(false);
     setCurrentPhoto((prev) => (prev + 1) % professorPhotos.length);
-  };
+  }, []);
+
+  const handleDotClick = useCallback((index: number) => {
+    setIsAutoPlaying(false);
+    setCurrentPhoto(index);
+  }, []);
 
   return (
     <section id="sobre" className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
@@ -71,8 +76,9 @@ const AboutSection = () => {
                     alt={photo.alt}
                     width={600}
                     height={800}
-                    loading="lazy"
+                    loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
+                    style={{ contentVisibility: 'auto', containIntrinsicSize: '600px 800px' }}
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
                       index === currentPhoto ? 'opacity-100' : 'opacity-0'
                     }`}
@@ -104,10 +110,7 @@ const AboutSection = () => {
                   {professorPhotos.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => {
-                        setIsAutoPlaying(false);
-                        setCurrentPhoto(index);
-                      }}
+                      onClick={() => handleDotClick(index)}
                       className={`h-2 rounded-full transition-all duration-300 ${
                         index === currentPhoto
                           ? 'bg-primary w-6'
@@ -176,6 +179,8 @@ const AboutSection = () => {
       </div>
     </section>
   );
-};
+});
+
+AboutSection.displayName = 'AboutSection';
 
 export default AboutSection;
