@@ -19,9 +19,9 @@ const professorPhotos = [
 
 const stats = [
   { icon: Users, value: '+500', label: 'Alunos Transformados' },
-  { icon: Award, value: 'Top 2', label: 'Competição Nacional' },
+  { icon: Award, value: 'Top 2', label: 'Scalibu / Estreante / Mineiro' },
   { icon: Target, value: '8+', label: 'Anos de Experiência' },
-  { icon: TrendingUp, value: '98%', label: 'Taxa de Satisfação' },
+  { icon: TrendingUp, value: 'Top 7', label: 'BopGames Profissional' },
 ];
 
 const AboutSection = () => {
@@ -116,7 +116,7 @@ const AboutSection = () => {
               
               {/* Floating badge */}
               <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground px-6 py-3 rounded-xl shadow-lg">
-                <span className="font-display font-bold text-lg">TOP 2 Nacional</span>
+                <span className="font-display font-bold text-lg">Atleta Profissional</span>
               </div>
             </div>
           </div>
@@ -133,11 +133,17 @@ const AboutSection = () => {
             <div className="space-y-3 sm:space-y-4 text-muted-foreground mb-6 sm:mb-8">
               <p className="text-sm sm:text-base md:text-lg leading-relaxed">
                 Atleta e Treinador com mais de <strong className="text-foreground">8 anos de experiência</strong> em
-                transformação corporal e preparação para competições. Conquistou o <strong className="text-foreground">Top 2 
-                em competição nacional de fisiculturismo</strong>, comprovando na prática a eficácia da sua metodologia.
+                transformação corporal e preparação para competições.
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                Especialista em <strong className="text-foreground">emagrecimento, hipertrofia e definição muscular</strong>, 
+                <strong className="text-foreground">Conquistas:</strong><br />
+                • Campeonato Scalibu TOP 2<br />
+                • Campeonato Estreante TOP 2<br />
+                • Campeonato Mineiro TOP 2<br />
+                • BopGames Profissional TOP 7
+              </p>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+                Especialista em <strong className="text-foreground">hipertrofia e definição muscular</strong>, 
                 desenvolve protocolos individualizados baseados em ciência e experiência prática, garantindo resultados 
                 reais para cada perfil de aluno.
               </p>

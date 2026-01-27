@@ -19,7 +19,7 @@ const steps = [
     number: '03',
     icon: HeartPulse,
     title: 'Nutrição Estratégica',
-    description: 'Plano alimentar flexível e sustentável, ajustado ao seu estilo de vida e objetivos.',
+    description: 'Facilitamos sua conexão com nutricionistas de elite para que sua nutrição seja tão personalizada quanto seu protocolo de treinamento.',
   },
   {
     number: '04',
