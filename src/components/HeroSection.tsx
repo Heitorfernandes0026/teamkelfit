@@ -11,17 +11,17 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Background Image - Full screen with overlay */}
-      <div className="absolute inset-0">
+    <section className="relative min-h-screen overflow-hidden bg-background">
+      {/* Background Image - Maintains aspect ratio, positioned right */}
+      <div className="absolute inset-0 flex justify-end">
         <img
           src={heroImage}
           alt="Team KelFit"
-          className="w-full h-full object-cover object-center"
+          className="h-full w-auto max-w-none object-contain object-right"
         />
-        {/* Dark overlay - gradient from left for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/80" />
+        {/* Subtle gradient overlay for text readability on left */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/70" />
       </div>
 
       {/* Content - Left aligned */}
