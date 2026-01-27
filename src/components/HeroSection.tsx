@@ -1,4 +1,3 @@
-import { Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-kelfit.jpg';
 import WorkoutMarquee from './WorkoutMarquee';
@@ -56,14 +55,6 @@ const HeroSection = () => {
             >
               Comece Agora
             </Button>
-            
-            {/* Play button - Hidden on small screens */}
-            <button 
-              onClick={() => document.querySelector('#como-funciona')?.scrollIntoView({ behavior: 'smooth' })}
-              className="hidden sm:flex w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-foreground/30 items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors flex-shrink-0"
-            >
-              <Play className="w-4 h-4 md:w-5 md:h-5 text-foreground fill-current" />
-            </button>
           </div>
         </div>
       </div>
