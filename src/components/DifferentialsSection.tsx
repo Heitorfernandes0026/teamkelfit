@@ -6,7 +6,7 @@ const differentials = [
   {
     icon: Target,
     title: 'Personalização Total',
-    description: 'Cada aspecto do seu programa é criado exclusivamente para você.',
+    description: 'Seu treino será específico e criado exclusivamente pra você.',
   },
   {
     icon: Headphones,
@@ -16,7 +16,7 @@ const differentials = [
   {
     icon: FlaskConical,
     title: 'Base Científica',
-    description: 'Métodos comprovados por pesquisas atualizadas.',
+    description: 'Modelos comprovados exercícios atualizados usando a essência da musculação.',
   },
   {
     icon: Trophy,
@@ -26,12 +26,12 @@ const differentials = [
   {
     icon: Sparkles,
     title: 'Evolução Semanal',
-    description: 'Ajustes constantes para otimizar seu progresso.',
+    description: 'Treinos periodizados, ajustes constantes, otimizar seu tempo e progredir mais rápido.',
   },
   {
     icon: Zap,
     title: 'Método Eficiente',
-    description: 'Máximos resultados com treinos objetivos e práticos.',
+    description: 'Lei do esforço • Senso de merecimento • Seguimento da ordem',
   },
 ];
 
