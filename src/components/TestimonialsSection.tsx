@@ -13,6 +13,7 @@ import transform6 from '@/assets/transformations/transform-6.jpeg';
 import transform7 from '@/assets/transformations/transform-7.jpeg';
 import transform8 from '@/assets/transformations/transform-8.jpeg';
 import transform9 from '@/assets/transformations/transform-9.jpeg';
+import transform10 from '@/assets/transformations/transform-10.jpeg';
 import testimonialVideo from '@/assets/transformations/testimonial-video.mp4';
 
 // Social proof photos
@@ -31,6 +32,7 @@ const transformations = [
   { id: 8, image: transform7, name: 'Transformação 7', caption: 'Transformação física e mental' },
   { id: 9, image: transform8, name: 'Transformação 8', caption: 'Antes e depois - Compromisso e dedicação' },
   { id: 10, image: transform9, name: 'Transformação 9', caption: 'Definição abdominal - Resultado real' },
+  { id: 11, image: transform10, name: 'Transformação 10', caption: 'Redução de gordura e definição corporal' },
 ];
 
 const socialProofPhotos = [
