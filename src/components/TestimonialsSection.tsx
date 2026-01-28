@@ -15,6 +15,7 @@ import transform8 from '@/assets/transformations/transform-8.jpeg';
 import transform9 from '@/assets/transformations/transform-9.jpeg';
 import transform10 from '@/assets/transformations/transform-10.jpeg';
 import testimonialVideo from '@/assets/transformations/testimonial-video.mp4';
+import sampleVideo from '@/assets/transformations/sample-video.mp4';
 
 // Social proof photos
 import socialProof1 from '@/assets/social-proof-1.jpeg';
@@ -186,6 +187,30 @@ const TestimonialsSection = memo(() => {
                 </div>
               </div>
             ))}
+        </div>
+        </div>
+
+        {/* Sample Video Section */}
+        <div className="mb-12 md:mb-20">
+          <h3 className="text-center text-xl md:text-2xl font-display font-bold mb-6 md:mb-8">
+            Aperte o Play e veja uma Amostra do <span className="text-primary">Que Te Espera no Time</span>
+          </h3>
+          
+          <div className="max-w-lg md:max-w-2xl mx-auto">
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden bg-black aspect-[9/16] md:aspect-video border-4 border-primary shadow-[0_0_30px_hsl(4_82%_56%_/_0.4)]">
+              <video
+                src={sampleVideo}
+                controls
+                preload="none"
+                poster=""
+                width={640}
+                height={360}
+                className="w-full h-full object-contain"
+              >
+                Seu navegador não suporta vídeos.
+              </video>
+            </div>
+            <p className="text-center text-muted-foreground text-sm mt-3">Clique para reproduzir o vídeo</p>
           </div>
         </div>
 
