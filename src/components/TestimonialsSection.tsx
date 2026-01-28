@@ -36,9 +36,9 @@ const transformations = [
 ];
 
 const socialProofPhotos = [
-  { id: 1, image: socialProof1, caption: 'Treino presencial com alunas' },
-  { id: 2, image: socialProof2, caption: 'Correção de execução em tempo real' },
-  { id: 3, image: socialProof3, caption: 'Intensidade e foco nos treinos' },
+  { id: 1, image: socialProof1, caption: 'Correções em análise de evolução em tempo real' },
+  { id: 2, image: socialProof2, caption: 'Técnica e carga ajustada personalizada' },
+  { id: 3, image: socialProof3, caption: 'Treinos intensos e com foco no resultados' },
 ];
 
 const testimonials = [
