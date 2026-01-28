@@ -204,8 +204,7 @@ const TestimonialsSection = memo(() => {
                 <video
                   src={video}
                   controls
-                  preload="none"
-                  poster=""
+                  preload="metadata"
                   className="w-full h-full object-contain"
                 >
                   Seu navegador não suporta vídeos.
@@ -227,8 +226,7 @@ const TestimonialsSection = memo(() => {
               <video
                 src={testimonialVideo}
                 controls
-                preload="none"
-                poster=""
+                preload="metadata"
                 width={640}
                 height={360}
                 className="w-full h-full object-contain"
