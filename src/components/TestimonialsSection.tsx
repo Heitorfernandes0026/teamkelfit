@@ -16,6 +16,8 @@ import transform9 from '@/assets/transformations/transform-9.jpeg';
 import transform10 from '@/assets/transformations/transform-10.jpeg';
 import testimonialVideo from '@/assets/transformations/testimonial-video.mp4';
 import sampleVideo from '@/assets/transformations/sample-video.mp4';
+import sampleVideo2 from '@/assets/transformations/sample-video-2.mp4';
+import sampleVideo3 from '@/assets/transformations/sample-video-3.mp4';
 
 // Social proof photos
 import socialProof1 from '@/assets/social-proof-1.jpeg';
@@ -196,22 +198,22 @@ const TestimonialsSection = memo(() => {
             Aperte o Play e veja uma Amostra do <span className="text-primary">Que Te Espera no Time</span>
           </h3>
           
-          <div className="max-w-lg md:max-w-2xl mx-auto">
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden bg-black aspect-[9/16] md:aspect-video border-4 border-primary shadow-[0_0_30px_hsl(4_82%_56%_/_0.4)]">
-              <video
-                src={sampleVideo}
-                controls
-                preload="none"
-                poster=""
-                width={640}
-                height={360}
-                className="w-full h-full object-contain"
-              >
-                Seu navegador não suporta vídeos.
-              </video>
-            </div>
-            <p className="text-center text-muted-foreground text-sm mt-3">Clique para reproduzir o vídeo</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto px-4">
+            {[sampleVideo, sampleVideo2, sampleVideo3].map((video, index) => (
+              <div key={index} className="relative rounded-xl md:rounded-2xl overflow-hidden bg-black aspect-[9/16] border-4 border-primary shadow-[0_0_30px_hsl(4_82%_56%_/_0.4)]">
+                <video
+                  src={video}
+                  controls
+                  preload="none"
+                  poster=""
+                  className="w-full h-full object-contain"
+                >
+                  Seu navegador não suporta vídeos.
+                </video>
+              </div>
+            ))}
           </div>
+          <p className="text-center text-muted-foreground text-sm mt-4">Clique para reproduzir os vídeos</p>
         </div>
 
         {/* Video Section - Separate */}
