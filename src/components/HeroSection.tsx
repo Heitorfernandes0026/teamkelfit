@@ -23,7 +23,7 @@ const HeroSection = memo(() => {
         decoding="sync"
         loading="eager"
         style={{ contentVisibility: 'auto', containIntrinsicSize: '1920px 1080px' }}
-        className="absolute inset-0 top-16 md:top-20 w-full h-full object-cover object-[25%_center] md:object-center"
+        className="absolute inset-0 top-16 md:top-20 w-full h-full object-cover object-[10%_center] md:object-center"
       />
 
       {/* Content - Responsive layout with flexbox centering */}
