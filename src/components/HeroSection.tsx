@@ -23,7 +23,7 @@ const HeroSection = memo(() => {
         decoding="sync"
         loading="eager"
         style={{ contentVisibility: 'auto', containIntrinsicSize: '1920px 1080px' }}
-        className="absolute inset-0 top-16 md:top-20 w-full h-full object-cover object-[55%_center] md:object-center"
+        className="absolute inset-0 top-16 md:top-20 w-full h-full object-cover object-[45%_center] md:object-center"
       />
 
       {/* Content - Responsive layout with flexbox centering */}
@@ -46,7 +46,7 @@ const HeroSection = memo(() => {
           </p>
 
           {/* CTA Buttons - Responsive layout */}
-          <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4">
+          <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4 mt-4 md:mt-0">
             <Button
               onClick={scrollToPlans}
               size="lg"
