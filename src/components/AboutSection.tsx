@@ -139,7 +139,7 @@ const AboutSection = memo(() => {
             
             <div className="space-y-3 sm:space-y-4 text-muted-foreground mb-6 sm:mb-8">
               <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-                Atleta e Treinador com mais de <strong className="text-foreground">8 anos de experiência</strong> em
+                Atleta, Treinador e Professor <strong className="text-foreground">(CREF 013387-G/MG)</strong> com mais de <strong className="text-foreground">8 anos de experiência</strong> em
                 transformação corporal e preparação para competições.
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed">
